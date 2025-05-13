@@ -74,10 +74,10 @@ once there is no crazy error messages run
           2> — redirect stderr (error output)
           /dev/null — a "black hole" that discards anything sent to it  
 *-exec cat {} \; 
-            exec — tells find to run a command on the results
-            cat — the command to run (shows file contents)
-            {} — gets replaced by the found file path
-            \; — ends the command (escaped ; to avoid shell confusion)
+          exec — tells find to run a command on the results
+          cat — the command to run (shows file contents)
+          {} — gets replaced by the found file path
+          \; — ends the command (escaped ; to avoid shell confusion)
 Password: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
 
 LEVEL 7-8 
