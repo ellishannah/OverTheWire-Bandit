@@ -71,8 +71,8 @@ LEVEL 6-7
 once there is no crazy error messages run 
 **"find / -type f -size 33c -user bandit7 -group bandit6 2>/dev/null -exec cat {} \;"** 
 *2>/dev/null = take away permission denied error messages 
-            2> — redirect stderr (error output)
-            /dev/null — a "black hole" that discards anything sent to it  
+          2> — redirect stderr (error output)
+          /dev/null — a "black hole" that discards anything sent to it  
 *-exec cat {} \; 
             exec — tells find to run a command on the results
             cat — the command to run (shows file contents)
