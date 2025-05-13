@@ -11,7 +11,7 @@ ls -> found file "readme"
 cat readme 
 password found: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
 exit 
-login at "ssh bandit1@bandit.labs.overthewire.org -p 2220"
+**login at "ssh bandit1@bandit.labs.overthewire.org -p 2220"**
 use password above 
 **Repeat the process of exiting and logging in via SSH to progress to the next level, using the appropriate level numbers.**
 
@@ -67,5 +67,19 @@ password: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
 
 
 LEVEL 6-7 
+"find / -type f -size 33c -user bandit7 -group bandit6 2>/dev/null" 
+once there is no crazy error messages run 
+**"find / -type f -size 33c -user bandit7 -group bandit6 2>/dev/null -exec cat {} \;"** 
+*2>/dev/null = take away permission denied error messages 
+            2> — redirect stderr (error output)
+            /dev/null — a "black hole" that discards anything sent to it  
+*-exec cat {} \; 
+            exec — tells find to run a command on the results
+            cat — the command to run (shows file contents)
+            {} — gets replaced by the found file path
+            \; — ends the command (escaped ; to avoid shell confusion)
+Password: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+
+LEVEL 7-8 
 
 
