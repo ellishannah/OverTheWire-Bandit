@@ -1,85 +1,67 @@
-# OverTheWire-Bandit
+OverTheWire Bandit Challenges
+Overview
+OverTheWire Bandit is a game designed to teach basic Linux command-line and hacking skills. In this repository, you will find notes and instructions for each level of the game, along with solutions to the challenges. The goal of each level is to find the password for the next level by exploring the system and solving a series of problems using command-line tools and knowledge.
 
+How to Use This Repository
+This repository is organized by levels, where each level's notes contain the steps taken, commands used, and the solution found. Follow the instructions for each level and apply the commands you learn to the next stage of the challenge.
 
-LEVEL 0 
-connect to SSH: "ssh bandit0@bandit.labs.overthewire.org -p 2220"
-password: bandit0 
+Folder Structure
+game-notes.md: The detailed notes and solutions for each OverTheWire Bandit level.
 
+cheat-sheets.md: A collection of useful commands, flags, and tips that can help with different challenges.
 
-LEVEL 0-1 
-ls -> found file "readme" 
-cat readme 
-password found: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
-exit 
-**login at "ssh bandit1@bandit.labs.overthewire.org -p 2220"**
-use password above 
-**Repeat the process of exiting and logging in via SSH to progress to the next level, using the appropriate level numbers.**
+Progression
+As you progress through the levels, you will SSH into a server, execute commands to gather information, and find passwords that allow you to move to the next level. The key challenge is to find and apply Linux tools effectively.
 
+To help with progression, the following process is used:
 
-LEVEL 1-2 
-ls 
-"-" file found
-cat ./- 
-password: 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
-* ./ means current directory, telling system look here for this folder "-"
+SSH Login: Connect to the server using the SSH command provided in the level.
 
+Explore: Use commands like ls, cat, find, and others to explore the server and locate files.
 
-LEVEL 2-3 
-ls 
-file found: "spaces in this filename" 
-cat spaces(I used tab) which autocompleted command to "cat spaces/ in/ this/ filename" 
-password: MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
-* Spaces in filenames: To handle spaces in filenames, use backslashes (\) to escape each space, or use quotes (" ").
+Apply Knowledge: Use the appropriate Linux tools and logic to solve problems and find the next password.
 
+Exit: After completing a level, exit the SSH session and log into the next level using the found password.
 
-LEVEL 3-4 
-ls 
-cd inhere
-ls -a 
-cat ...Hiding-From-You
-password: 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+Example Progression Steps:
 
+Level 0-1: Use cat readme to find the first password.
 
-LEVEL 4-5
-ls 
-cd inhere
-cat ./-file07 (password found) **use up/down arrow keys to not retype command a million times** 
-password =: 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw 
+Level 1-2: Use cat ./- to reveal the next password.
 
+Cheat Sheet (Key Linux Commands)
+ls: List directory contents.
 
-LEVEL 5-6
-ls 
-cd inhere
-uff, need a more effective way to search 
-cd .. 
-"find inhere/ -type f -size 1033c ! -executable" -> **inhere/maybehere07/.file2**
-follow this path and open file 
-password: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
-*Find quick-sheet 
-  find [where_to_search] [criteria] [actions]
-  Most useful flags:
-          type f → Only look for files (not folders)
-          name "pattern" → Match file names (wildcards like *.txt work)
-          size 1033c → Exact size in bytes (c = bytes, k = kilobytes, M = megabytes)
-          readable → File is readable
-          ! -executable → File is not executable (! = NOT)
-          exec COMMAND {} \; → Run a command (like cat) on the result
+cat: Display the contents of a file.
 
+find [path] [criteria]: Search for files that match certain criteria (e.g., size, type, permissions).
 
-LEVEL 6-7 
-"find / -type f -size 33c -user bandit7 -group bandit6 2>/dev/null" 
-once there is no crazy error messages run 
-**"find / -type f -size 33c -user bandit7 -group bandit6 2>/dev/null -exec cat {} \;"** 
-*2>/dev/null = take away permission denied error messages 
-          2> — redirect stderr (error output)
-          /dev/null — a "black hole" that discards anything sent to it  
-*-exec cat {} \; 
-          exec — tells find to run a command on the results
-          cat — the command to run (shows file contents)
-          {} — gets replaced by the found file path
-          \; — ends the command (escaped ; to avoid shell confusion)
-Password: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+cd [directory]: Change to a different directory.
 
-LEVEL 7-8 
+exit: Exit the SSH session.
 
+2>/dev/null: Redirect error messages (useful for ignoring "Permission Denied" errors).
+
+Useful Flags for find Command:
+-type f: Only look for files, not directories.
+
+-size [size]: Search for files of a specific size (e.g., -size 33c for 33 bytes).
+
+-user [username]: Search for files owned by a specific user.
+
+-group [groupname]: Search for files belonging to a specific group.
+
+-exec [command] {} \;: Execute a command on each file found (e.g., cat to display file contents).
+
+Tips & Tricks
+Navigating through directories: If ls does not show any results, try using ls -a to list hidden files.
+
+Spaces in filenames: Use backslashes or quotes to handle spaces in filenames.
+
+Finding specific files: Use the find command with proper flags to search for files with specific properties (e.g., owned by a certain user, specific file size).
+
+Redirecting errors: Use 2>/dev/null to suppress "Permission Denied" errors.
+
+How to Contribute
+Feel free to submit pull requests if you have additional tips, solutions, or suggestions for the Bandit challenges. This is a collaborative effort to help others learn Linux command-line skills.
 
