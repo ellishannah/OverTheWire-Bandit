@@ -2,11 +2,17 @@
 
 
 LEVEL 0 
+*Level Goal
+The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0. Once logged in, go to the Level 1 page to find out how to beat Level 1.*
+- 
 connect to SSH: "ssh bandit0@bandit.labs.overthewire.org -p 2220"
 password: bandit0 
 
 
 LEVEL 0-1 
+*Level Goal
+The password for the next level is stored in a file called readme located in the home directory. Use this password to log into bandit1 using SSH. Whenever you find a password for a level, use SSH (on port 2220) to log into that level and continue the game.*
+-
 ls -> found file "readme" 
 cat readme 
 password found: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
@@ -17,6 +23,9 @@ use password above
 
 
 LEVEL 1-2 
+**Level Goal
+The password for the next level is stored in a file called - located in the home directory* 
+-
 ls 
 "-" file found
 cat ./- 
@@ -25,6 +34,9 @@ password: 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
 
 
 LEVEL 2-3 
+**Level Goal
+The password for the next level is stored in a file called spaces in this filename located in the home directory**
+-
 ls 
 file found: "spaces in this filename" 
 cat spaces(I used tab) which autocompleted command to "cat spaces/ in/ this/ filename" 
@@ -33,6 +45,9 @@ password: MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
 
 
 LEVEL 3-4 
+*Level Goal
+The password for the next level is stored in a hidden file in the inhere directory.*
+-
 ls 
 cd inhere
 ls -a 
@@ -41,6 +56,9 @@ password: 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
 
 
 LEVEL 4-5
+*Level Goal
+The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.*
+-
 ls 
 cd inhere
 cat ./-file07 (password found) **use up/down arrow keys to not retype command a million times** 
@@ -48,6 +66,12 @@ password =: 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
 
 
 LEVEL 5-6
+*Level Goal
+The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+human-readable
+1033 bytes in size
+not executable*
+-
 ls 
 cd inhere
 uff, need a more effective way to search 
@@ -67,6 +91,12 @@ password: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
 
 
 LEVEL 6-7 
+*Level Goal
+The password for the next level is stored somewhere on the server and has all of the following properties:
+owned by user bandit7
+owned by group bandit6
+33 bytes in size* 
+- 
 "find / -type f -size 33c -user bandit7 -group bandit6 2>/dev/null" 
 once there is no crazy error messages run 
 **"find / -type f -size 33c -user bandit7 -group bandit6 2>/dev/null -exec cat {} \;"** 
@@ -80,4 +110,55 @@ once there is no crazy error messages run
           \; — ends the command (escaped ; to avoid shell confusion)
 Password: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
 
+
 LEVEL 7-8 
+*Level Goal
+The password for the next level is stored in the file data.txt next to the word millionth*
+- 
+ls (found data.txt file) 
+"grep millionth data.txt"
+password: dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+boom, easy 
+
+
+LEVEL 8-9 
+*Level Goal
+The password for the next level is stored in the file data.txt and is the only line of text that occurs only once* 
+- 
+"sort data.txt | uniq -u"
+          - sort data.txt — sorts the lines alphabetically (required because uniq only removes consecutive duplicates).
+          - uniq -u — prints only the unique lines (those that occur exactly once).
+password: 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+
+
+LEVEL 9-10 
+*Level Goal
+The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.*
+- 
+"strings data.txt | grep '==='" 
+          - strings data.txt → extracts all human-readable sequences from the file.
+          - grep '==' → filters only the lines that include multiple equal signs, as stated in the prompt.
+password: FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+
+
+level 10-11
+*Level Goal
+The password for the next level is stored in the file data.txt, which contains base64 encoded data*
+- 
+"base64 -d data.txt"
+          - base64 → the tool
+          - -d → means "decode"
+password: dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+can also use: "cat data.txt | base64 -d" when scripting with longer outputs or stringing commands 
+*base64 is a form of encoding, not encryption! Base64 takes that binary data and translates it into plain letters/numbers/symbols. Essentially, helps humans and computers speak the same language without data getting lost in translation. 
+          - Encoding: wrapping your data in bubble wrap so it can safely go through a mail slot.
+          - Encryption: locking your data in a safe so only someone with a key can read it.
+
+
+LEVEL 11-12
+*Level Goal
+The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions*
+- 
+
+
+
